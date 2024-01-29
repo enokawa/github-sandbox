@@ -28,6 +28,6 @@ jobs:
             --assignee @me \
             --base ${{ github.event.inputs.target }} \
             --head develop \
-            --title 'Relase ($(date '+%Y/%m/%d'))'' \
-            --body '${{ github.event.inputs.message }}'' \
+            --title 'Relase ($(date '+%Y/%m/%d'))' \
+            --body '${{ github.event.inputs.message }}' \
             --label enhancement
