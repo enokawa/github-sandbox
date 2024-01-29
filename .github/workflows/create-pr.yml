@@ -27,7 +27,7 @@ jobs:
       - name: Create Pull request
         run: |
           gh pr create \
-            --assignee @me \
+            --assignee ${{ github.actor }} \
             --base ${{ github.event.inputs.target }} \
             --head develop \
             --title 'Relase ($(date '+%Y/%m/%d'))' \
