@@ -13,12 +13,13 @@ on:
         type: string
         required: true
         description: Message
-        default: "Great work!!"
+        default: 'Great work!!'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      TZ: 'Asia/Tokyo'
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
