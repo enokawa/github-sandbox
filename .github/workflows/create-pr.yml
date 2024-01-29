@@ -1,4 +1,4 @@
-name: Create Pull request
+name: Create Pull request (main)
 
 on:
   workflow_dispatch:
@@ -16,13 +16,17 @@ on:
         default: "Great work!!"
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: echo
+      - name: Create Pull request
         run: |
-          echo "target: ${{ github.event.inputs.target }}"
-          echo "message: ${{ github.event.inputs.message }}"
+          gh pr create --assignee @me \
+            --base ${{ github.event.inputs.target }}" \
+            --head develop \
+            --title "Relase ($(date '+%Y/%m/%d'))" \
+            --body ${{ github.event.inputs.message }}" \
+            --label enhancement
