@@ -1,0 +1,28 @@
+name: Create Pull request
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        required: true
+        description: Target branch
+        options:
+          - main
+      message:
+        type: string
+        required: true
+        description: Message
+        default: "Great work!!"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: echo
+        run: |
+          echo "target: ${{ github.event.inputs.target }}"
+          echo "message: ${{ github.event.inputs.message }}"
